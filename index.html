@@ -6,9 +6,9 @@
 <title>我的主页</title>
 <style>
 :root{
-  --accent:#00d4ff; --accent2:#7b2fff; --radius:16px;
-  --glass-bg:rgba(15,15,30,.65); --glass-border:rgba(255,255,255,.08);
-  --text:#eef0f6; --text2:#8b90a5;
+  --accent:#4a6fa5; --accent2:#6b8cae; --radius:14px;
+  --card-bg:rgba(255,255,255,.85); --card-border:rgba(0,0,0,.08);
+  --text:#2c2c2c; --text2:#6b6b7b;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 
@@ -21,43 +21,12 @@ body{
 }
 #bgLayer{
   position:fixed;inset:0;z-index:-2;
-  background:#080812;
+  background:#f3f2ef;
 }
 #bgImage{
-  position:fixed;inset:0;z-index:-1;opacity:.35;
+  position:fixed;inset:0;z-index:-1;opacity:.4;
   background-size:cover;background-position:center;
   background-repeat:no-repeat;
-}
-/* Animated grid overlay */
-#gridOverlay{
-  position:fixed;inset:0;z-index:-1;
-  background-image:
-    linear-gradient(rgba(0,212,255,.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,212,255,.03) 1px,transparent 1px);
-  background-size:40px 40px;
-  animation:gridMove 20s linear infinite;
-}
-@keyframes gridMove{
-  0%{background-position:0 0}
-  100%{background-position:40px 40px}
-}
-/* Subtle glow orb */
-#glowOrb{
-  position:fixed;width:500px;height:500px;border-radius:50%;
-  background:radial-gradient(circle,rgba(0,212,255,.06),transparent 70%);
-  top:-200px;right:-100px;z-index:-1;pointer-events:none;
-  animation:orbFloat 12s ease-in-out infinite;
-}
-#glowOrb2{
-  position:fixed;width:400px;height:400px;border-radius:50%;
-  background:radial-gradient(circle,rgba(123,47,255,.05),transparent 70%);
-  bottom:-150px;left:-100px;z-index:-1;pointer-events:none;
-  animation:orbFloat 15s ease-in-out infinite reverse;
-}
-@keyframes orbFloat{
-  0%,100%{transform:translate(0,0)}
-  33%{transform:translate(30px,-20px)}
-  66%{transform:translate(-20px,10px)}
 }
 
 .container{width:100%;max-width:500px;position:relative;z-index:1}
@@ -71,24 +40,14 @@ body{
 
 /* ===== Profile ===== */
 .profile{text-align:center;padding:30px 0 32px}
-.avatar-wrap{position:relative;display:inline-block}
-.avatar-wrap::after{
-  content:'';position:absolute;inset:-4px;border-radius:50%;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  opacity:.4;z-index:-1;filter:blur(8px);
-}
+.avatar-wrap{display:inline-block}
 .avatar{
-  width:90px;height:90px;border-radius:50%;object-fit:cover;
-  border:2px solid rgba(255,255,255,.15);background:#1a1a2e;
-  transition:transform 300ms;position:relative;z-index:1;
+  width:86px;height:86px;border-radius:50%;object-fit:cover;
+  border:2px solid rgba(0,0,0,.06);background:#e8e8e8;
 }
-.avatar:hover{transform:scale(1.05)}
 .name{
-  font-size:1.3rem;font-weight:800;margin:16px 0 6px;
-  letter-spacing:.5px;
-  background:linear-gradient(135deg,#eef0f6,#a0b0d0);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
+  font-size:1.25rem;font-weight:700;margin:14px 0 6px;
+  color:var(--text);
 }
 .bio{
   font-size:.82rem;color:var(--text2);line-height:1.6;
@@ -97,8 +56,8 @@ body{
 
 /* ===== Section Title ===== */
 .section-title{
-  text-align:center;font-size:.72rem;color:rgba(255,255,255,.25);
-  letter-spacing:3px;text-transform:uppercase;margin:8px 0 16px;
+  text-align:center;font-size:.7rem;color:#aaa;
+  letter-spacing:2px;margin:8px 0 16px;
 }
 
 /* ===== Category Tabs ===== */
@@ -108,99 +67,62 @@ body{
 }
 .cat-tab{
   padding:7px 16px;border-radius:50px;font-size:.78rem;cursor:pointer;
-  background:rgba(255,255,255,.04);color:rgba(255,255,255,.45);
-  border:1px solid rgba(255,255,255,.06);
-  transition:all 200ms;user-select:none;white-space:nowrap;
+  background:rgba(255,255,255,.7);color:#888;
+  border:1px solid rgba(0,0,0,.06);user-select:none;white-space:nowrap;
 }
-.cat-tab:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7)}
 .cat-tab.active{
-  background:rgba(0,212,255,.12);color:var(--accent);
-  border-color:rgba(0,212,255,.25);
-  box-shadow:0 0 16px rgba(0,212,255,.08);
+  background:var(--accent);color:#fff;border-color:var(--accent);
 }
 
 /* ===== Links ===== */
 .links{display:flex;flex-direction:column;gap:10px}
 .link-card{
   display:flex;align-items:center;gap:14px;
-  background:var(--glass-bg);backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  border:1px solid var(--glass-border);
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
   border-radius:var(--radius);padding:14px 18px;
-  text-decoration:none;color:var(--text);
-  transition:all 250ms cubic-bezier(.4,0,.2,1);
-  cursor:pointer;position:relative;overflow:hidden;
+  text-decoration:none;color:var(--text);cursor:pointer;
 }
-/* Glow line on hover */
-.link-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--accent),transparent);
-  opacity:0;transition:opacity 250ms;
-}
-.link-card:hover::before{opacity:.6}
-.link-card:hover{
-  background:rgba(20,20,45,.8);border-color:rgba(0,212,255,.2);
-  transform:translateY(-2px);
-  box-shadow:0 8px 32px rgba(0,0,0,.4),0 0 40px rgba(0,212,255,.04);
-}
-.link-card:active{transform:scale(.98)}
 .link-thumb{
-  width:48px;height:48px;border-radius:12px;object-fit:cover;
-  background:rgba(255,255,255,.04);flex-shrink:0;
-  border:1px solid rgba(255,255,255,.05);
+  width:48px;height:48px;border-radius:10px;object-fit:cover;
+  background:#eee;flex-shrink:0;
 }
 .link-info{flex:1;min-width:0}
-.link-title{
-  font-size:.9rem;font-weight:600;margin-bottom:2px;
-  transition:color 200ms;
-}
-.link-card:hover .link-title{color:#fff}
+.link-title{font-size:.9rem;font-weight:600;margin-bottom:2px}
 .link-desc{font-size:.74rem;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.link-arrow{
-  color:rgba(255,255,255,.2);font-size:1rem;flex-shrink:0;
-  transition:all 250ms;
-}
-.link-card:hover .link-arrow{color:var(--accent);transform:translateX(3px)}
+.link-arrow{color:#bbb;font-size:1rem;flex-shrink:0}
 
 /* ===== Footer ===== */
-.footer{text-align:center;padding:36px 0 20px;color:rgba(255,255,255,.15);font-size:.7rem;letter-spacing:1px}
+.footer{text-align:center;padding:36px 0 20px;color:#bbb;font-size:.7rem}
+#adminSecret{cursor:default;user-select:none}
 
 /* ===== Search & QR Floating ===== */
 .search-btn{
   position:fixed;top:20px;left:20px;z-index:20;
   width:40px;height:40px;border-radius:50%;
-  background:var(--glass-bg);backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.5);
-  cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;
-  transition:all 200ms;
+  background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.06);
+  color:#999;cursor:pointer;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
 }
-.search-btn:hover{color:var(--accent);border-color:rgba(0,212,255,.3)}
-.search-bar-wrap{
-  position:fixed;top:20px;left:68px;z-index:20;
-  display:none;align-items:center;gap:8px;
-}
-.search-bar-wrap.show{display:flex}
 .search-bar-wrap input{
   width:200px;padding:9px 14px;border-radius:50px;
-  background:var(--glass-bg);backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.08);color:#d0d0e0;
-  font-size:.82rem;outline:none;transition:border-color 200ms;
+  background:rgba(255,255,255,.85);border:1px solid rgba(0,0,0,.08);
+  color:var(--text);font-size:.82rem;outline:none;
 }
-.search-bar-wrap input:focus{border-color:var(--accent)}
-.search-bar-wrap input::placeholder{color:rgba(255,255,255,.25)}
-.search-clear{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:1rem;padding:4px}
+.search-bar-wrap input::placeholder{color:#aaa}
+.search-bar-wrap{position:fixed;top:20px;left:68px;z-index:20;display:none;align-items:center;gap:8px}
+.search-bar-wrap.show{display:flex}
+.search-clear{background:none;border:none;color:#999;cursor:pointer;font-size:1rem;padding:4px}
 
 .qr-float{
   position:fixed;top:20px;right:20px;z-index:20;text-align:center;
 }
 .qr-img{
   width:64px;height:64px;border-radius:10px;object-fit:cover;
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
-  cursor:pointer;transition:transform 200ms,box-shadow 200ms;
+  background:#eee;border:1px solid rgba(0,0,0,.08);cursor:pointer;
 }
-.qr-img:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(0,212,255,.15)}
-.qr-label{font-size:.65rem;color:rgba(255,255,255,.3);margin-top:4px;letter-spacing:.5px}
-
+.qr-label{font-size:.65rem;color:#aaa;margin-top:4px;letter-spacing:.5px}
+.qr-modal img{max-width:280px;max-height:280px;border-radius:16px;border:2px solid rgba(0,0,0,.1)}
 /* QR modal */
 .qr-modal{
   position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.8);
@@ -234,93 +156,71 @@ body{
 /* ===== Admin Panel ===== */
 .admin-panel{
   position:fixed;top:0;right:0;width:100%;max-width:420px;height:100vh;
-  background:rgba(8,8,18,.95);backdrop-filter:blur(24px);
-  -webkit-backdrop-filter:blur(24px);
-  border-left:1px solid rgba(255,255,255,.06);z-index:100;
-  transform:translateX(100%);transition:transform 280ms cubic-bezier(.4,0,.2,1);
+  background:#fff;border-left:1px solid rgba(0,0,0,.06);z-index:100;
+  transform:translateX(100%);transition:transform 280ms;
   display:flex;flex-direction:column;overflow:hidden;
 }
 .admin-panel.open{transform:translateX(0)}
 .admin-header{
   display:flex;align-items:center;justify-content:space-between;
-  padding:18px 20px;border-bottom:1px solid rgba(255,255,255,.06);
+  padding:18px 20px;border-bottom:1px solid rgba(0,0,0,.06);
 }
-.admin-header h3{font-size:.95rem;color:#e0e0f0;letter-spacing:.5px}
-.admin-close{background:none;border:none;color:#666;font-size:1.3rem;cursor:pointer;transition:color 150ms}
-.admin-close:hover{color:#fff}
+.admin-header h3{font-size:.95rem;color:#333}
+.admin-close{background:none;border:none;color:#999;font-size:1.3rem;cursor:pointer}
 .admin-body{flex:1;overflow-y:auto;padding:16px 20px}
-.admin-body label{display:block;font-size:.74rem;color:#666;margin:12px 0 5px;letter-spacing:.5px;text-transform:uppercase}
+.admin-body label{display:block;font-size:.74rem;color:#888;margin:12px 0 5px;letter-spacing:.5px}
 .admin-body input,.admin-body textarea,.admin-body select{
-  width:100%;padding:10px 12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
-  border-radius:8px;color:#d0d0e0;font-size:.85rem;font-family:inherit;
-  outline:none;transition:border-color 200ms;
+  width:100%;padding:10px 12px;background:#f8f8f8;border:1px solid rgba(0,0,0,.08);
+  border-radius:8px;color:#333;font-size:.85rem;font-family:inherit;outline:none;
 }
 .admin-body input:focus,.admin-body textarea:focus,.admin-body select:focus{border-color:var(--accent)}
 .admin-body textarea{resize:vertical;min-height:60px}
 
 .admin-body button{
   width:100%;padding:11px;border:none;border-radius:8px;font-size:.84rem;
-  font-weight:600;cursor:pointer;transition:all 180ms;margin-top:10px;
-  letter-spacing:.3px;
+  font-weight:600;cursor:pointer;margin-top:10px;letter-spacing:.3px;
 }
-.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
-.btn-primary:hover{filter:brightness(1.2);box-shadow:0 4px 20px rgba(0,212,255,.25)}
+.btn-primary{background:var(--accent);color:#fff}
 .btn-danger{background:transparent;border:1px solid rgba(231,76,60,.3);color:#e74c3c}
-.btn-outline{background:transparent;border:1px solid rgba(255,255,255,.1);color:#999;margin-top:6px}
-.btn-outline:hover{border-color:rgba(255,255,255,.3);color:#ccc}
+.btn-outline{background:transparent;border:1px solid rgba(0,0,0,.1);color:#888;margin-top:6px}
 
 .link-item{
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);
+  background:#f8f8f8;border:1px solid rgba(0,0,0,.05);
   border-radius:8px;padding:10px 12px;margin:6px 0;
   display:flex;align-items:center;gap:10px;font-size:.8rem;
 }
-.link-item .thumb-sm{width:36px;height:36px;border-radius:8px;object-fit:cover;background:rgba(255,255,255,.04)}
+.link-item .thumb-sm{width:36px;height:36px;border-radius:8px;object-fit:cover;background:#eee}
 .link-item .info{flex:1;min-width:0}
-.link-item .info .t{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#d0d0e0}
-.link-item .info .u{font-size:.7rem;color:#555;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.link-item .info .t{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#333}
+.link-item .info .u{font-size:.7rem;color:#999;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .link-item .btns{display:flex;gap:2px;flex-shrink:0}
 .link-item .btns button{
-  background:none;border:none;color:#555;font-size:.85rem;cursor:pointer;
+  background:none;border:none;color:#bbb;font-size:.85rem;cursor:pointer;
   padding:4px 6px;border-radius:4px;margin:0;width:auto;
 }
-.link-item .btns button:hover{background:rgba(255,255,255,.06);color:#999}
+.link-item .btns button:hover{background:rgba(0,0,0,.04);color:#666}
 
-.avatar-preview{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#1a1a2e;border:1px solid rgba(255,255,255,.08)}
+.avatar-preview{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#eee;border:1px solid rgba(0,0,0,.06)}
 
-/* ===== Overlay ===== */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99;opacity:0;pointer-events:none;transition:opacity 280ms}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:99;opacity:0;pointer-events:none;transition:opacity 280ms}
 .overlay.show{opacity:1;pointer-events:auto}
 
-/* ===== Background Presets ===== */
 .bg-presets{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
 .bg-preset{
   width:32px;height:32px;border-radius:8px;cursor:pointer;
-  border:2px solid transparent;transition:all 150ms;
+  border:2px solid transparent;
 }
-.bg-preset:hover,.bg-preset.active{border-color:var(--accent);box-shadow:0 0 12px rgba(0,212,255,.3)}
+.bg-preset.active{border-color:var(--accent)}
 
 /* Password dialog */
-.pw-dialog{
-  position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.85);
-  display:none;align-items:center;justify-content:center;
-}
+.pw-dialog{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center}
 .pw-dialog.show{display:flex}
-.pw-box{
-  background:#141420;border:1px solid rgba(255,255,255,.08);
-  border-radius:16px;padding:24px;width:280px;text-align:center;
-}
-.pw-box h4{color:#e0e0e0;margin-bottom:16px;font-size:.9rem}
-.pw-box input{
-  width:100%;padding:10px 14px;background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);border-radius:8px;
-  color:#e0e0e0;font-size:.9rem;text-align:center;outline:none;
-  transition:border-color 200ms;
-}
-.pw-box input:focus{border-color:var(--accent)}
-.pw-box button{
-  width:100%;margin-top:12px;padding:10px;border:none;border-radius:8px;
-  background:var(--accent);color:#fff;font-size:.85rem;font-weight:600;cursor:pointer;
-}
+.pw-box{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:24px;width:280px;text-align:center;position:relative}
+.pw-box h4{color:#333;font-size:.9rem;margin:0 0 16px}
+.pw-close-btn{position:absolute;top:-14px;right:-14px;width:32px;height:32px;border-radius:50%;background:#555;color:#fff;border:none;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;z-index:1}
+.pw-close-btn:hover{background:#333}
+.pw-box input{width:100%;padding:10px 14px;background:#f5f5f5;border:1px solid rgba(0,0,0,.1);border-radius:8px;color:#333;font-size:.9rem;text-align:center;outline:none}
+.pw-box button{width:100%;margin-top:12px;padding:10px;border:none;border-radius:8px;background:var(--accent);color:#fff;font-size:.85rem;font-weight:600;cursor:pointer}
 .pw-error{color:#e74c3c;font-size:.72rem;margin-top:8px;display:none}
 @media(max-width:500px){
   .admin-panel{max-width:100%}
@@ -332,7 +232,7 @@ body{
 .btn-row button{flex:1}
 .export-area{margin-top:16px}
 .export-area textarea{font-size:.7rem;max-height:100px}
-hr{border-color:rgba(255,255,255,.06);margin:20px 0}
+hr{border-color:rgba(0,0,0,.06);margin:20px 0}
 </style>
 </head>
 <body>
@@ -340,9 +240,6 @@ hr{border-color:rgba(255,255,255,.06);margin:20px 0}
 <!-- ===== BACKGROUND LAYERS ===== -->
 <div id="bgLayer"></div>
 <div id="bgImage"></div>
-<div id="gridOverlay"></div>
-<div id="glowOrb"></div>
-<div id="glowOrb2"></div>
 
 <!-- ===== SEARCH ===== -->
 <button class="search-btn" id="searchToggle" title="搜索">🔍</button>
@@ -353,7 +250,7 @@ hr{border-color:rgba(255,255,255,.06);margin:20px 0}
 
 <!-- ===== QR CODE ===== -->
 <div class="qr-float">
-  <img class="qr-img" id="qrCodeImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231a1a2e' rx='10'/%3E%3Ctext x='50' y='60' text-anchor='middle' fill='%23555' font-size='14' font-family='sans-serif'%3E二维码%3C/text%3E%3C/svg%3E" alt="二维码">
+  <img class="qr-img" id="qrCodeImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e8e8e8' rx='10'/%3E%3Ctext x='50' y='60' text-anchor='middle' fill='%23aaa' font-size='14' font-family='sans-serif'%3E二维码%3C/text%3E%3C/svg%3E" alt="二维码">
   <div class="qr-label">扫一扫添加我吧</div>
 </div>
 <div class="qr-modal" id="qrModal">
@@ -372,21 +269,21 @@ hr{border-color:rgba(255,255,255,.06);margin:20px 0}
   <div class="section-title">Resources</div>
   <div class="cat-tabs" id="catTabs"></div>
   <div class="links" id="linksContainer"></div>
-  <div class="footer">© 2025 临风</div>
+  <div class="footer"><span id="adminSecret">©</span> 2025 临风</div>
 </div>
 
 <!-- ===== PASSWORD DIALOG ===== -->
 <div class="pw-dialog" id="pwDialog">
-  <div class="pw-box">
-    <h4>🔐 管理员验证</h4>
+  <div style="position:relative;display:inline-block">
+    <button class="pw-close-btn" id="pwClose">✕</button>
+    <div class="pw-box">
+      <h4>🔐 管理员验证</h4>
     <input type="password" id="pwInput" placeholder="请输入密码" autocomplete="off">
     <div class="pw-error" id="pwError">密码错误</div>
     <button id="pwSubmit">确认</button>
   </div>
+  </div>
 </div>
-
-<!-- ===== ADMIN TOGGLE ===== -->
-<button class="admin-toggle" id="adminToggle" title="管理">⚙️</button>
 
 <!-- ===== OVERLAY ===== -->
 <div class="overlay" id="overlay"></div>
@@ -421,12 +318,12 @@ hr{border-color:rgba(255,255,255,.06);margin:20px 0}
     <label>🎨 背景设置</label>
     <div style="font-size:.74rem;color:#555;margin-bottom:6px">预设背景</div>
     <div class="bg-presets" id="bgPresets">
-      <div class="bg-preset active" data-bg="default" style="background:#080812" title="默认暗黑"></div>
-      <div class="bg-preset" data-bg="cyber" style="background:linear-gradient(135deg,#0a0a1a,#0d0d2b)" title="赛博"></div>
-      <div class="bg-preset" data-bg="midnight" style="background:linear-gradient(180deg,#0b0b1a,#1a0a2e)" title="午夜紫"></div>
-      <div class="bg-preset" data-bg="ocean" style="background:linear-gradient(180deg,#0a1628,#0a1a2e)" title="深海"></div>
-      <div class="bg-preset" data-bg="emerald" style="background:linear-gradient(180deg,#0a0f0a,#0a1a12)" title="翡翠"></div>
-      <div class="bg-preset" data-bg="custom" style="background:conic-gradient(#333,#666,#333,#666);font-size:10px;display:flex;align-items:center;justify-content:center;color:#aaa" title="自定义">
+      <div class="bg-preset active" data-bg="default" style="background:#f3f2ef" title="默认浅灰"></div>
+      <div class="bg-preset" data-bg="warm" style="background:linear-gradient(180deg,#f8f6f0,#f0ece4)" title="暖白"></div>
+      <div class="bg-preset" data-bg="cool" style="background:linear-gradient(180deg,#eef2f7,#e8ecf2)" title="冷灰"></div>
+      <div class="bg-preset" data-bg="soft" style="background:linear-gradient(180deg,#f5f2f0,#efe9e2)" title="柔和"></div>
+      <div class="bg-preset" data-bg="light" style="background:#fafafa" title="纯白"></div>
+      <div class="bg-preset" data-bg="custom" style="background:conic-gradient(#ddd,#bbb,#ddd,#bbb);font-size:10px;display:flex;align-items:center;justify-content:center;color:#777" title="自定义">
         <span>📷</span>
       </div>
     </div>
@@ -500,7 +397,7 @@ function loadData(){
       bio: '分享AI工具 · 副业实操 · 英语学习资源\n关注我，一起搞钱',
       qrCode: ''
     },
-    background: { type:'default', url:'', opacity:35 },
+    background: { type:'default', url:'', opacity:40 },
     links: [
       {title:'英语学习大礼包',desc:'考研真题+口语教程+外刊精读',image:'',url:'https://pan.quark.cn/s/your-link',cat:'学习资源'},
       {title:'副业赚钱实操手册',desc:'自媒体+电商+AI变现',image:'',url:'https://pan.quark.cn/s/your-link',cat:'副业赚钱'},
@@ -527,8 +424,8 @@ function renderPublic(){
   const qrUrl = p.qrCode || '';
   const qrDefault = "data:image/svg+xml," + encodeURIComponent(
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">'+
-    '<rect width="100" height="100" fill="#1a1a2e" rx="10"/>'+
-    '<text x="50" y="60" text-anchor="middle" fill="#555" font-size="14" font-family="sans-serif">二维码</text></svg>'
+    '<rect width="100" height="100" fill="#e8e8e8" rx="10"/>'+
+    '<text x="50" y="60" text-anchor="middle" fill="#aaa" font-size="14" font-family="sans-serif">二维码</text></svg>'
   );
   document.getElementById('qrCodeImg').src = qrUrl || qrDefault;
   document.getElementById('qrModalImg').src = qrUrl || qrDefault;
@@ -577,21 +474,21 @@ function applyBackground(){
   const bgImage = document.getElementById('bgImage');
 
   // Reset
-  bgLayer.style.background = '#080812';
+  bgLayer.style.background = '#f3f2ef';
   bgImage.style.backgroundImage = '';
   bgImage.style.opacity = '0';
 
   const presets = {
-    default: '#080812',
-    cyber: 'linear-gradient(135deg,#0a0a1a,#0d0d2b)',
-    midnight: 'linear-gradient(180deg,#0b0b1a,#1a0a2e)',
-    ocean: 'linear-gradient(180deg,#0a1628,#0a1a2e)',
-    emerald: 'linear-gradient(180deg,#0a0f0a,#0a1a12)',
+    default: '#f3f2ef',
+    warm: 'linear-gradient(180deg,#f8f6f0,#f0ece4)',
+    cool: 'linear-gradient(180deg,#eef2f7,#e8ecf2)',
+    soft: 'linear-gradient(180deg,#f5f2f0,#efe9e2)',
+    light: '#fafafa',
   };
 
   if(bg.url){
     // Custom image
-    bgLayer.style.background = '#080812';
+    bgLayer.style.background = '#f3f2ef';
     bgImage.style.backgroundImage = `url(${bg.url})`;
     bgImage.style.opacity = (bg.opacity / 100).toString();
   } else if(presets[bg.type]){
@@ -613,18 +510,17 @@ function applyBackground(){
 function getDefaultAvatar(){
   return 'data:image/svg+xml,' + encodeURIComponent(
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">'+
-    '<circle cx="50" cy="35" r="18" fill="#333"/>'+
-    '<ellipse cx="50" cy="88" rx="32" ry="20" fill="#333"/>'+
-    '<circle cx="50" cy="50" r="36" fill="none" stroke="#444" stroke-width="2" stroke-dasharray="8 4"/></svg>'
+    '<circle cx="50" cy="35" r="18" fill="#ccc"/>'+
+    '<ellipse cx="50" cy="88" rx="32" ry="20" fill="#ccc"/></svg>'
   );
 }
 
 function getDefaultIcon(i){
-  const c = ['#00d4ff','#7b2fff','#00e396','#ffb800','#ff3d71','#0095ff','#00d68f','#ff6b35'][i%8];
+  const c = ['#4a6fa5','#6b8cae','#8fa4c4','#a0b0c0','#5a7a95','#3a5a7a','#7890a5','#6888a0'][i%8];
   return 'data:image/svg+xml,' + encodeURIComponent(
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">`+
     `<rect width="100" height="100" fill="${c}" rx="20" opacity=".15"/>`+
-    `<text x="50" y="62" text-anchor="middle" fill="${c}" font-size="36" font-family="sans-serif" opacity=".8">📦</text></svg>`
+    `<text x="50" y="62" text-anchor="middle" fill="${c}" font-size="36" font-family="sans-serif" opacity=".7">📦</text></svg>`
   );
 }
 
@@ -876,7 +772,8 @@ let adminAuth = false;
 // Save auth state in sessionStorage so it persists per tab
 if(sessionStorage.getItem('admin_auth') === '1') adminAuth = true;
 
-document.getElementById('adminToggle').addEventListener('click', ()=>{
+// Secret admin trigger hidden in footer ©
+document.getElementById('adminSecret').addEventListener('click', ()=>{
   if(adminAuth){ openAdmin(); return; }
   document.getElementById('pwDialog').classList.add('show');
   document.getElementById('pwInput').value = '';
@@ -898,6 +795,11 @@ document.getElementById('pwSubmit').addEventListener('click', ()=>{
 
 document.getElementById('pwInput').addEventListener('keydown', (e)=>{
   if(e.key==='Enter') document.getElementById('pwSubmit').click();
+});
+
+document.getElementById('pwClose').addEventListener('click', ()=>{
+  document.getElementById('pwDialog').classList.remove('show');
+  document.getElementById('pwInput').value = '';
 });
 document.getElementById('adminClose').addEventListener('click',closeAdmin);
 document.getElementById('overlay').addEventListener('click',closeAdmin);
