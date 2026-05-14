@@ -28,13 +28,20 @@ body::before{content:'';position:fixed;inset:0;z-index:-2;background:#f3f2ef}
 .link-desc{font-size:.74rem;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .link-arrow{color:#bbb;font-size:1rem;flex-shrink:0}
 .footer{text-align:center;padding:36px 0 20px;color:#bbb;font-size:.7rem}
-@media(max-width:500px){.container{padding-top:16px}.profile{padding:20px 0 24px}.link-card{padding:12px 14px}}
+.qr-float{position:fixed;top:20px;right:20px;z-index:20;text-align:center}
+.qr-img{width:64px;height:64px;border-radius:10px;object-fit:cover;background:#eee;border:1px solid rgba(0,0,0,.08);cursor:pointer}
+.qr-label{font-size:.65rem;color:#aaa;margin-top:4px;letter-spacing:.5px}
+@media(max-width:500px){.container{padding-top:16px}.profile{padding:20px 0 24px}.link-card{padding:12px 14px}.qr-float{top:12px;right:12px}.qr-img{width:52px;height:52px}}
 </style>
 </head>
 <body>
+<div class="qr-float">
+  <img class="qr-img" src="images/erweima.png" alt="微信二维码">
+  <div class="qr-label">扫一扫添加我吧</div>
+</div>
 <div class="container">
   <div class="profile">
-    <div class="avatar-wrap"><img class="avatar" id="profileAvatar" src="" alt="头像"></div>
+    <div class="avatar-wrap"><img class="avatar" src="images/touxiang.png" alt="头像"></div>
     <div class="name" id="profileName"></div>
     <div class="bio" id="profileBio"></div>
   </div>
@@ -43,14 +50,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-2;background:#f3f2ef}
   <div class="footer">© 2025 临风</div>
 </div>
 <script>
-var DATA = {"profile":{"avatar":"https://lingfeng-111.github.io/Links/images/touxiang.png","name":"临风资源库","bio":"分享AI工具 · 副业实操 · 英语学习资源\n关注我，一起搞钱","qrCode":"https://lingfeng-111.github.io/Links/images/erweima.png"},"background":{"type":"cyber","url":"","opacity":58},"links":[{"title":"副业赚钱实操手册","desc":"自媒体+电商+AI变现","image":"","url":"https://pan.quark.cn/s/your-link","cat":"其他资源"},{"title":"英语学习大礼包","desc":"考研真题+口语教程+外刊精读","image":"","url":"https://pan.quark.cn/s/your-link","cat":"其他资源"},{"title":"AI工具合集","desc":"ChatGPT+MJ全套教程","image":"","url":"https://pan.quark.cn/s/your-link","cat":"其他资源"},{"title":"小红书起号攻略","desc":"从0到1完整流程","image":"","url":"https://pan.quark.cn/s/your-link","cat":"其他资源"},{"title":"111","desc":"111","image":"","url":"111","cat":"学习资源"}]};
+var DATA = {"profile":{"avatar":"https://lingfeng-111.github.io/Links/images/touxiang.png","name":"临风资源库","bio":"分享AI工具 · 副业实操 · 英语学习资源\n关注我，一起搞钱","qrCode":"https://lingfeng-111.github.io/Links/images/erweima.png"},"background":{"type":"cyber","url":"","opacity":58},"links":[{"title":"副业赚钱实操手册","desc":"自媒体+电商+AI变现","image":"","url":"https://pan.quark.cn/s/your-link","cat":"其他资源"},{"title":"英语学习大礼包","desc":"考研真题+口语教程+外刊精读","image":"","url":"https://pan.quark.cn/s/your-link","cat":"其他资源"},{"title":"AI工具合集","desc":"ChatGPT+MJ全套教程","image":"","url":"https://pan.quark.cn/s/your-link","cat":"其他资源"},{"title":"小红书起号攻略","desc":"从0到1完整流程","image":"","url":"https://pan.quark.cn/s/your-link","cat":"其他资源"},{"title":"111","desc":"111","image":"","url":"111","cat":"学习资源"},{"title":"234","desc":"123","image":"123","url":"123","cat":"副业赚钱"}]};
 var activeCat='all';
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function gi(i){var c=['#4a6fa5','#6b8cae','#8fa4c4','#a0b0c0','#5a7a95','#3a5a7a','#7890a5','#6888a0'][i%8];return'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="'+c+'" rx="20" opacity=".15"/><text x="50" y="62" text-anchor="middle" fill="'+c+'" font-size="36" font-family="sans-serif" opacity=".7">📦</text></svg>')}
-function ga(){return'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="35" r="18" fill="#ccc"/><ellipse cx="50" cy="88" rx="32" ry="20" fill="#ccc"/></svg>')}
 function render(){
   var p=DATA.profile;
-  document.getElementById('profileAvatar').src=p.avatar||ga();
   document.getElementById('profileName').textContent=p.name;
   document.getElementById('profileBio').textContent=p.bio;
   var cats=['all','学习资源','副业赚钱','AI工具','影视推荐','其他资源'];
