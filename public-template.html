@@ -28,17 +28,39 @@ body::before{content:'';position:fixed;inset:0;z-index:-2;background:#f3f2ef}
 .link-desc{font-size:.74rem;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .link-arrow{color:#bbb;font-size:1rem;flex-shrink:0}
 .footer{text-align:center;padding:36px 0 20px;color:#bbb;font-size:.7rem}
+/* Search */
+.search-btn{position:fixed;top:20px;left:20px;z-index:20;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.06);color:#999;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.search-bar-wrap{position:fixed;top:20px;left:68px;z-index:20;display:none;align-items:center;gap:8px}
+.search-bar-wrap.show{display:flex}
+.search-bar-wrap input{width:200px;padding:9px 14px;border-radius:50px;background:rgba(255,255,255,.85);border:1px solid rgba(0,0,0,.08);color:var(--text);font-size:.82rem;outline:none}
+.search-bar-wrap input::placeholder{color:#aaa}
+.search-clear{background:none;border:none;color:#999;cursor:pointer;font-size:1rem;padding:4px}
+/* QR */
 .qr-float{position:fixed;top:20px;right:20px;z-index:20;text-align:center}
 .qr-img{width:64px;height:64px;border-radius:10px;object-fit:cover;background:#eee;border:1px solid rgba(0,0,0,.08);cursor:pointer}
 .qr-label{font-size:.65rem;color:#aaa;margin-top:4px;letter-spacing:.5px}
-@media(max-width:500px){.container{padding-top:16px}.profile{padding:20px 0 24px}.link-card{padding:12px 14px}.qr-float{top:12px;right:12px}.qr-img{width:52px;height:52px}}
+.qr-modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;cursor:pointer}
+.qr-modal.show{display:flex}
+.qr-modal img{max-width:280px;max-height:280px;border-radius:16px;border:2px solid rgba(0,0,0,.1)}
+@media(max-width:500px){.container{padding-top:16px}.profile{padding:20px 0 24px}.link-card{padding:12px 14px}.search-btn{top:12px;left:12px}.search-bar-wrap{top:12px;left:60px}.search-bar-wrap input{width:150px}.qr-float{top:12px;right:12px}.qr-img{width:52px;height:52px}}
 </style>
 </head>
 <body>
+<!-- SEARCH -->
+<button class="search-btn" id="searchToggle">🔍</button>
+<div class="search-bar-wrap" id="searchBarWrap">
+  <input type="text" id="searchInput" placeholder="搜索资源...">
+  <button class="search-clear" id="searchClear">✕</button>
+</div>
+<!-- QR -->
 <div class="qr-float">
   <img class="qr-img" src="images/erweima.png" alt="微信二维码">
   <div class="qr-label">扫一扫添加我吧</div>
 </div>
+<div class="qr-modal" id="qrModal">
+  <img src="images/erweima.png" alt="微信二维码大图">
+</div>
+
 <div class="container">
   <div class="profile">
     <div class="avatar-wrap"><img class="avatar" src="images/touxiang.png" alt="头像"></div>
@@ -49,9 +71,10 @@ body::before{content:'';position:fixed;inset:0;z-index:-2;background:#f3f2ef}
   <div class="links" id="linksContainer"></div>
   <div class="footer">© 2025 临风</div>
 </div>
+
 <script>
 var DATA = __DATA_PLACEHOLDER__;
-var activeCat='all';
+var activeCat='all',searchTerm='';
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function gi(i){var c=['#4a6fa5','#6b8cae','#8fa4c4','#a0b0c0','#5a7a95','#3a5a7a','#7890a5','#6888a0'][i%8];return'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="'+c+'" rx="20" opacity=".15"/><text x="50" y="62" text-anchor="middle" fill="'+c+'" font-size="36" font-family="sans-serif" opacity=".7">📦</text></svg>')}
 function render(){
@@ -62,8 +85,16 @@ function render(){
   var cl={all:'全部','学习资源':'📚 学习','副业赚钱':'💰 副业','AI工具':'🤖 AI','影视推荐':'🎬 影视','其他资源':'📦 其他'};
   document.getElementById('catTabs').innerHTML=cats.map(function(c){return'<span class="cat-tab'+(c===activeCat?' active':'')+'" data-cat="'+c+'">'+cl[c]+'</span>'}).join('');
   var filtered=activeCat==='all'?DATA.links:DATA.links.filter(function(l){return(l.cat||'其他资源')===activeCat});
+  if(searchTerm){var q=searchTerm.toLowerCase();filtered=filtered.filter(function(l){return l.title.toLowerCase().indexOf(q)>-1||(l.desc||'').toLowerCase().indexOf(q)>-1})}
   document.getElementById('linksContainer').innerHTML=filtered.map(function(l,i){return'<a href="'+esc(l.url)+'" target="_blank" rel="noopener" class="link-card"><img class="link-thumb" src="'+(l.image||gi(i))+'" onerror="this.src=\''+gi(i)+'\'" alt=""><div class="link-info"><div class="link-title">'+esc(l.title)+'</div>'+(l.desc?'<div class="link-desc">'+esc(l.desc)+'</div>':'')+'</div><span class="link-arrow">→</span></a>'}).join('')}
 document.getElementById('catTabs').addEventListener('click',function(e){var t=e.target.closest('.cat-tab');if(!t)return;activeCat=t.dataset.cat;render()});
+// Search
+document.getElementById('searchToggle').addEventListener('click',function(){var w=document.getElementById('searchBarWrap');w.classList.toggle('show');if(w.classList.contains('show'))document.getElementById('searchInput').focus();else{searchTerm='';document.getElementById('searchInput').value='';render()}});
+document.getElementById('searchInput').addEventListener('input',function(e){searchTerm=e.target.value.trim();render()});
+document.getElementById('searchClear').addEventListener('click',function(){document.getElementById('searchInput').value='';searchTerm='';render();document.getElementById('searchBarWrap').classList.remove('show')});
+// QR enlarge
+document.querySelector('.qr-img').addEventListener('click',function(){document.getElementById('qrModal').classList.add('show')});
+document.getElementById('qrModal').addEventListener('click',function(){document.getElementById('qrModal').classList.remove('show')});
 render();
 </script>
 </body>
