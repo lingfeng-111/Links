@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<html lang="zh-CN"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234a6fa5'/%3E%3Ctext x='50' y='68' text-anchor='middle' fill='white' font-size='50'%3E🔗%3C/text%3E%3C/svg%3E">
@@ -217,8 +215,8 @@ hr{border-color:rgba(0,0,0,.06);margin:20px 0}
 <body>
 
 <!-- ===== BACKGROUND LAYERS ===== -->
-<div id="bgLayer"></div>
-<div id="bgImage"></div>
+<div id="bgLayer" style="background: rgb(243, 242, 239);"></div>
+<div id="bgImage" style="opacity: 0;"></div>
 
 <!-- ===== SEARCH ===== -->
 <button class="search-btn" id="searchToggle" title="搜索">🔍</button>
@@ -229,25 +227,71 @@ hr{border-color:rgba(0,0,0,.06);margin:20px 0}
 
 <!-- ===== QR CODE ===== -->
 <div class="qr-float">
-  <img class="qr-img" id="qrCodeImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e8e8e8' rx='10'/%3E%3Ctext x='50' y='60' text-anchor='middle' fill='%23aaa' font-size='14' font-family='sans-serif'%3E二维码%3C/text%3E%3C/svg%3E" alt="二维码">
+  <img class="qr-img" id="qrCodeImg" src="https://lingfeng-111.github.io/Links/images/erweima.png" alt="二维码">
   <div class="qr-label">扫一扫添加我吧</div>
 </div>
 <div class="qr-modal" id="qrModal">
-  <img id="qrModalImg" src="" alt="二维码大图">
+  <img id="qrModalImg" src="https://lingfeng-111.github.io/Links/images/erweima.png" alt="二维码大图">
 </div>
 
 <!-- ===== PUBLIC VIEW ===== -->
 <div class="container" id="publicView">
   <div class="profile">
     <div class="avatar-wrap">
-      <img class="avatar" id="profileAvatar" src="" alt="头像">
+      <img class="avatar" id="profileAvatar" src="https://lingfeng-111.github.io/Links/images/touxiang.png" alt="头像">
     </div>
-    <div class="name" id="profileName">临风</div>
-    <div class="bio" id="profileBio">分享AI工具 · 副业实操 · 英语学习资源<br>关注我，一起搞钱</div>
+    <div class="name" id="profileName">临风资源库</div>
+    <div class="bio" id="profileBio">分享AI工具 · 副业实操 · 英语学习资源
+关注我，一起搞钱</div>
   </div>
   <div class="section-title">Resources</div>
-  <div class="cat-tabs" id="catTabs"></div>
-  <div class="links" id="linksContainer"></div>
+  <div class="cat-tabs" id="catTabs"><span class="cat-tab active" data-cat="all">全部</span><span class="cat-tab" data-cat="学习资源">📚 学习</span><span class="cat-tab" data-cat="副业赚钱">💰 副业</span><span class="cat-tab" data-cat="AI工具">🤖 AI</span><span class="cat-tab" data-cat="影视推荐">🎬 影视</span><span class="cat-tab" data-cat="其他资源">📦 其他</span></div>
+  <div class="links" id="linksContainer">
+    <a href="https://pan.quark.cn/s/your-link" target="_blank" rel="noopener" class="link-card">
+      <img class="link-thumb" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%234a6fa5%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%234a6fa5%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%234a6fa5%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%234a6fa5%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E'" alt="">
+      <div class="link-info">
+        <div class="link-title">副业赚钱实操手册</div>
+        <div class="link-desc">自媒体+电商+AI变现</div>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+  
+    <a href="https://pan.quark.cn/s/your-link" target="_blank" rel="noopener" class="link-card">
+      <img class="link-thumb" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%236b8cae%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%236b8cae%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%236b8cae%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%236b8cae%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E'" alt="">
+      <div class="link-info">
+        <div class="link-title">英语学习大礼包</div>
+        <div class="link-desc">考研真题+口语教程+外刊精读</div>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+  
+    <a href="https://pan.quark.cn/s/your-link" target="_blank" rel="noopener" class="link-card">
+      <img class="link-thumb" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%238fa4c4%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%238fa4c4%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%238fa4c4%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%238fa4c4%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E'" alt="">
+      <div class="link-info">
+        <div class="link-title">AI工具合集</div>
+        <div class="link-desc">ChatGPT+MJ全套教程</div>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+  
+    <a href="https://pan.quark.cn/s/your-link" target="_blank" rel="noopener" class="link-card">
+      <img class="link-thumb" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%23a0b0c0%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%23a0b0c0%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%23a0b0c0%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%23a0b0c0%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E'" alt="">
+      <div class="link-info">
+        <div class="link-title">小红书起号攻略</div>
+        <div class="link-desc">从0到1完整流程</div>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+  
+    <a href="111" target="_blank" rel="noopener" class="link-card">
+      <img class="link-thumb" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%235a7a95%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%235a7a95%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%235a7a95%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%235a7a95%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E'" alt="">
+      <div class="link-info">
+        <div class="link-title">111</div>
+        <div class="link-desc">111</div>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+  </div>
   <div class="footer"><span id="adminSecret">©</span> 2025 临风</div>
 </div>
 
@@ -258,17 +302,17 @@ hr{border-color:rgba(0,0,0,.06);margin:20px 0}
     <div class="pw-box">
       <h4>🔐 管理员验证</h4>
     <input type="password" id="pwInput" placeholder="请输入密码" autocomplete="off">
-    <div class="pw-error" id="pwError">密码错误</div>
+    <div class="pw-error" id="pwError" style="display: none;">密码错误</div>
     <button id="pwSubmit">确认</button>
   </div>
   </div>
 </div>
 
 <!-- ===== OVERLAY ===== -->
-<div class="overlay" id="overlay"></div>
+<div class="overlay show" id="overlay"></div>
 
 <!-- ===== ADMIN PANEL ===== -->
-<div class="admin-panel" id="adminPanel">
+<div class="admin-panel open" id="adminPanel">
   <div class="admin-header">
     <h3>⚡ 后台管理</h3>
     <button class="admin-close" id="adminClose">✕</button>
@@ -277,7 +321,7 @@ hr{border-color:rgba(0,0,0,.06);margin:20px 0}
     <!-- Profile -->
     <label>头像URL</label>
     <div style="display:flex;align-items:center;gap:12px">
-      <img class="avatar-preview" id="avatarPreview" src="">
+      <img class="avatar-preview" id="avatarPreview" src="https://lingfeng-111.github.io/Links/images/touxiang.png">
       <input type="text" id="editAvatar" placeholder="https://... 或留空用默认" style="flex:1">
     </div>
     <label>昵称</label>
@@ -286,7 +330,7 @@ hr{border-color:rgba(0,0,0,.06);margin:20px 0}
     <textarea id="editBio" placeholder="简短介绍..."></textarea>
     <label>微信二维码URL</label>
     <div style="display:flex;align-items:center;gap:12px">
-      <img id="qrPreview" style="width:56px;height:56px;border-radius:8px;object-fit:cover;background:#1a1a2e;border:1px solid rgba(255,255,255,.08)">
+      <img id="qrPreview" style="width:56px;height:56px;border-radius:8px;object-fit:cover;background:#1a1a2e;border:1px solid rgba(255,255,255,.08)" src="https://lingfeng-111.github.io/Links/images/erweima.png">
       <input type="text" id="editQr" placeholder="https://... 二维码图片链接" style="flex:1">
     </div>
     <button class="btn-primary" id="saveProfile">💾 保存资料</button>
@@ -297,7 +341,7 @@ hr{border-color:rgba(0,0,0,.06);margin:20px 0}
     <label>🎨 背景设置</label>
     <div style="font-size:.74rem;color:#555;margin-bottom:6px">预设背景</div>
     <div class="bg-presets" id="bgPresets">
-      <div class="bg-preset active" data-bg="default" style="background:#f3f2ef" title="默认浅灰"></div>
+      <div class="bg-preset" data-bg="default" style="background:#f3f2ef" title="默认浅灰"></div>
       <div class="bg-preset" data-bg="warm" style="background:linear-gradient(180deg,#f8f6f0,#f0ece4)" title="暖白"></div>
       <div class="bg-preset" data-bg="cool" style="background:linear-gradient(180deg,#eef2f7,#e8ecf2)" title="冷灰"></div>
       <div class="bg-preset" data-bg="soft" style="background:linear-gradient(180deg,#f5f2f0,#efe9e2)" title="柔和"></div>
@@ -342,13 +386,85 @@ hr{border-color:rgba(0,0,0,.06);margin:20px 0}
     <hr>
 
     <!-- Link list -->
-    <h4 style="margin-bottom:8px;font-size:.85rem">📋 已有链接 (<span id="linkCount">0</span>)</h4>
-    <div id="linkList"></div>
+    <h4 style="margin-bottom:8px;font-size:.85rem">📋 已有链接 (<span id="linkCount">5</span>)</h4>
+    <div id="linkList">
+    <div class="link-item">
+      <img class="thumb-sm" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%234a6fa5%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%234a6fa5%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%234a6fa5%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%234a6fa5%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E'">
+      <div class="info">
+        <div class="t">副业赚钱实操手册 <span style="font-size:.68rem;color:#555">· 其他资源</span></div>
+        <div class="u">https://pan.quark.cn/s/your-link</div>
+      </div>
+      <div class="btns">
+        <button onclick="editLink(0)" title="编辑">✏️</button>
+        <button onclick="moveLink(0,-1)" title="上移">↑</button>
+        <button onclick="moveLink(0,1)" title="下移">↓</button>
+        <button onclick="deleteLink(0)" title="删除">🗑️</button>
+      </div>
+    </div>
+  
+    <div class="link-item">
+      <img class="thumb-sm" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%236b8cae%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%236b8cae%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%236b8cae%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%236b8cae%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E'">
+      <div class="info">
+        <div class="t">英语学习大礼包 <span style="font-size:.68rem;color:#555">· 其他资源</span></div>
+        <div class="u">https://pan.quark.cn/s/your-link</div>
+      </div>
+      <div class="btns">
+        <button onclick="editLink(1)" title="编辑">✏️</button>
+        <button onclick="moveLink(1,-1)" title="上移">↑</button>
+        <button onclick="moveLink(1,1)" title="下移">↓</button>
+        <button onclick="deleteLink(1)" title="删除">🗑️</button>
+      </div>
+    </div>
+  
+    <div class="link-item">
+      <img class="thumb-sm" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%238fa4c4%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%238fa4c4%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%238fa4c4%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%238fa4c4%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E'">
+      <div class="info">
+        <div class="t">AI工具合集 <span style="font-size:.68rem;color:#555">· 其他资源</span></div>
+        <div class="u">https://pan.quark.cn/s/your-link</div>
+      </div>
+      <div class="btns">
+        <button onclick="editLink(2)" title="编辑">✏️</button>
+        <button onclick="moveLink(2,-1)" title="上移">↑</button>
+        <button onclick="moveLink(2,1)" title="下移">↓</button>
+        <button onclick="deleteLink(2)" title="删除">🗑️</button>
+      </div>
+    </div>
+  
+    <div class="link-item">
+      <img class="thumb-sm" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%23a0b0c0%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%23a0b0c0%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%23a0b0c0%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%23a0b0c0%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E'">
+      <div class="info">
+        <div class="t">小红书起号攻略 <span style="font-size:.68rem;color:#555">· 其他资源</span></div>
+        <div class="u">https://pan.quark.cn/s/your-link</div>
+      </div>
+      <div class="btns">
+        <button onclick="editLink(3)" title="编辑">✏️</button>
+        <button onclick="moveLink(3,-1)" title="上移">↑</button>
+        <button onclick="moveLink(3,1)" title="下移">↓</button>
+        <button onclick="deleteLink(3)" title="删除">🗑️</button>
+      </div>
+    </div>
+  
+    <div class="link-item">
+      <img class="thumb-sm" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%235a7a95%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%235a7a95%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E" onerror="this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%235a7a95%22%20rx%3D%2220%22%20opacity%3D%22.15%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20text-anchor%3D%22middle%22%20fill%3D%22%235a7a95%22%20font-size%3D%2236%22%20font-family%3D%22sans-serif%22%20opacity%3D%22.7%22%3E%F0%9F%93%A6%3C%2Ftext%3E%3C%2Fsvg%3E'">
+      <div class="info">
+        <div class="t">111 <span style="font-size:.68rem;color:#555">· 学习资源</span></div>
+        <div class="u">111</div>
+      </div>
+      <div class="btns">
+        <button onclick="editLink(4)" title="编辑">✏️</button>
+        <button onclick="moveLink(4,-1)" title="上移">↑</button>
+        <button onclick="moveLink(4,1)" title="下移">↓</button>
+        <button onclick="deleteLink(4)" title="删除">🗑️</button>
+      </div>
+    </div>
+  </div>
 
     <hr>
 
     <!-- Export -->
     <button class="btn-primary" id="exportBtn">📋 导出数据备份</button>
+    <button class="btn-primary" id="deployBtn" style="background:#2da44e;margin-top:6px">🚀 一键部署到线上</button>
+    <div id="deployMsg" style="font-size:.72rem;color:#888;text-align:center;margin-top:6px">⏳ 正在部署...</div>
     <button class="btn-outline" id="resetBtn">🔄 清空全部数据</button>
   </div>
 </div>
@@ -371,19 +487,55 @@ function loadData(){
     return data;
   }
   return {
-    profile: {
-      avatar: '', name: '临风',
-      bio: '分享AI工具 · 副业实操 · 英语学习资源\n关注我，一起搞钱',
-      qrCode: ''
+  "profile": {
+    "avatar": "https://lingfeng-111.github.io/Links/images/touxiang.png",
+    "name": "临风资源库",
+    "bio": "分享AI工具 · 副业实操 · 英语学习资源\n关注我，一起搞钱",
+    "qrCode": "https://lingfeng-111.github.io/Links/images/erweima.png"
+  },
+  "background": {
+    "type": "cyber",
+    "url": "",
+    "opacity": 58
+  },
+  "links": [
+    {
+      "title": "副业赚钱实操手册",
+      "desc": "自媒体+电商+AI变现",
+      "image": "",
+      "url": "https://pan.quark.cn/s/your-link",
+      "cat": "其他资源"
     },
-    background: { type:'default', url:'', opacity:40 },
-    links: [
-      {title:'英语学习大礼包',desc:'考研真题+口语教程+外刊精读',image:'',url:'https://pan.quark.cn/s/your-link',cat:'学习资源'},
-      {title:'副业赚钱实操手册',desc:'自媒体+电商+AI变现',image:'',url:'https://pan.quark.cn/s/your-link',cat:'副业赚钱'},
-      {title:'AI工具合集',desc:'ChatGPT+MJ全套教程',image:'',url:'https://pan.quark.cn/s/your-link',cat:'AI工具'},
-      {title:'Netflix高分片单',desc:'IMDb 8分+精选影视推荐清单',image:'',url:'https://pan.quark.cn/s/your-link',cat:'影视推荐'},
-    ]
-  };
+    {
+      "title": "英语学习大礼包",
+      "desc": "考研真题+口语教程+外刊精读",
+      "image": "",
+      "url": "https://pan.quark.cn/s/your-link",
+      "cat": "其他资源"
+    },
+    {
+      "title": "AI工具合集",
+      "desc": "ChatGPT+MJ全套教程",
+      "image": "",
+      "url": "https://pan.quark.cn/s/your-link",
+      "cat": "其他资源"
+    },
+    {
+      "title": "小红书起号攻略",
+      "desc": "从0到1完整流程",
+      "image": "",
+      "url": "https://pan.quark.cn/s/your-link",
+      "cat": "其他资源"
+    },
+    {
+      "title": "111",
+      "desc": "111",
+      "image": "",
+      "url": "111",
+      "cat": "学习资源"
+    }
+  ]
+};;
 }
 
 function saveData(data){ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)) }
@@ -699,6 +851,66 @@ document.getElementById('exportBtn').addEventListener('click',()=>{
   alert('✅ 已导出 index.html\n请将文件上传到 GitHub 替换旧文件即可更新线上内容');
 });
 
+// ==================== AUTO DEPLOY ====================
+document.getElementById('deployBtn').addEventListener('click', async ()=>{
+  const msg = document.getElementById('deployMsg');
+  msg.textContent = '⏳ 正在部署...';
+  msg.style.color = '#888';
+
+  try {
+    const data = loadData();
+    const dataJson = JSON.stringify(data, null, 2);
+    let html = document.documentElement.outerHTML;
+
+    // Replace default data with current data
+    html = html.replace(
+      /(function loadData\(\)\{[\s\S]*?if\(migrated\) saveData\(data\);[\s\S]*?return data;[\s\S]*?\})[\s\S]*?return \{[\s\S]*?(profile:[\s\S]*?links: \[[\s\S]*?\])\s*\}/,
+      function(m, keep) { return keep + '\n  return ' + dataJson + ';'; }
+    );
+    if(html.indexOf(dataJson) === -1) {
+      html = html.replace(
+        /(loadData\(\)\{[\s\S]*?if\(migrated\)[\s\S]*?return data;\s*\})\s*return \{[\s\S]*?links:\s*\[[\s\S]*?\]\s*\}/,
+        '$1\n  return ' + dataJson + ';'
+      );
+    }
+
+    const token = sessionStorage.getItem('gh_token') || prompt('请输入 GitHub Token（仅本次会话有效）：');
+    if(!token){ msg.textContent='❌ 未输入Token'; msg.style.color='#e74c3c'; return; }
+    sessionStorage.setItem('gh_token', token);
+    const owner = 'lingfeng-111';
+    const repo = 'Links';
+    const path = 'index.html';
+    const apiBase = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+    // Get current file SHA
+    const getRes = await fetch(apiBase, {
+      headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }
+    });
+    if(!getRes.ok) throw new Error('获取文件信息失败: ' + getRes.status);
+    const fileInfo = await getRes.json();
+    const sha = fileInfo.sha;
+
+    // Upload new file
+    const content = btoa(unescape(encodeURIComponent(html)));
+    const putRes = await fetch(apiBase, {
+      method: 'PUT',
+      headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: '后台更新资源', content, sha })
+    });
+
+    if(putRes.ok) {
+      msg.textContent = '✅ 部署成功！1-2分钟后刷新线上页面';
+      msg.style.color = '#2da44e';
+    } else {
+      const err = await putRes.json();
+      throw new Error(err.message || '上传失败');
+    }
+  } catch(e) {
+    msg.textContent = '❌ 部署失败: ' + e.message;
+    msg.style.color = '#e74c3c';
+  }
+});
+
 // Reset
 document.getElementById('resetBtn').addEventListener('click',()=>{
   if(!confirm('⚠️ 确定清空全部数据？不可恢复！')) return;
@@ -795,5 +1007,6 @@ document.getElementById('catTabs').addEventListener('click', (e) => {
 renderPublic();
 applyBackground();
 </script>
-</body>
-</html>
+
+
+</body></html>
