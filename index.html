@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234a6fa5'/%3E%3Ctext x='50' y='68' text-anchor='middle' fill='white' font-size='50'%3E🔗%3C/text%3E%3C/svg%3E">
 <title>我的主页</title>
 <style>
 :root{
-  --accent:#4a6fa5; --accent2:#6b8cae; --radius:14px;
+  --accent:#4a6fa5; --radius:14px;
   --card-bg:rgba(255,255,255,.85); --card-border:rgba(0,0,0,.08);
   --text:#2c2c2c; --text2:#6b6b7b;
 }
@@ -30,13 +31,6 @@ body{
 }
 
 .container{width:100%;max-width:500px;position:relative;z-index:1}
-
-/* ===== Glass Card Mixin ===== */
-.glass{
-  background:var(--glass-bg);backdrop-filter:blur(24px);
-  -webkit-backdrop-filter:blur(24px);
-  border:1px solid var(--glass-border);
-}
 
 /* ===== Profile ===== */
 .profile{text-align:center;padding:30px 0 32px}
@@ -122,14 +116,13 @@ body{
   background:#eee;border:1px solid rgba(0,0,0,.08);cursor:pointer;
 }
 .qr-label{font-size:.65rem;color:#aaa;margin-top:4px;letter-spacing:.5px}
-.qr-modal img{max-width:280px;max-height:280px;border-radius:16px;border:2px solid rgba(0,0,0,.1)}
 /* QR modal */
 .qr-modal{
   position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.8);
   display:none;align-items:center;justify-content:center;cursor:pointer;
 }
 .qr-modal.show{display:flex}
-.qr-modal img{max-width:280px;max-height:280px;border-radius:16px;border:2px solid rgba(255,255,255,.1)}
+.qr-modal img{max-width:280px;max-height:280px;border-radius:16px;border:2px solid rgba(0,0,0,.1)}
 
 @media(max-width:500px){
   .search-btn{top:12px;left:12px}
@@ -137,20 +130,6 @@ body{
   .search-bar-wrap input{width:150px}
   .qr-float{top:12px;right:12px}
   .qr-img{width:52px;height:52px}
-}
-.admin-toggle{
-  position:fixed;bottom:24px;right:24px;z-index:99;
-  width:46px;height:46px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.04);
-  background:rgba(15,15,30,.3);backdrop-filter:blur(4px);
-  color:rgba(255,255,255,.08);cursor:pointer;font-size:1.1rem;
-  display:flex;align-items:center;justify-content:center;
-  transition:all 400ms ease;
-}
-.admin-toggle:hover{
-  background:var(--glass-bg);backdrop-filter:blur(12px);
-  color:rgba(255,255,255,.5);border-color:rgba(255,255,255,.1);
-  box-shadow:0 0 20px rgba(0,212,255,.15);
 }
 
 /* ===== Admin Panel ===== */
