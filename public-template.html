@@ -17,6 +17,9 @@ body::before{content:'';position:fixed;inset:0;z-index:-2;background:#f3f2ef}
 .name{font-size:1.25rem;font-weight:700;margin:14px 0 6px;color:var(--text)}
 .bio{font-size:.82rem;color:var(--text2);line-height:1.6;padding:0 20px;max-width:360px;margin:0 auto}
 .section-title{text-align:center;font-size:.7rem;color:#aaa;letter-spacing:2px;margin:8px 0 16px}
+.section-header{text-align:center;font-size:.82rem;font-weight:700;margin:20px 0 12px;padding:8px 0;letter-spacing:1px}
+.section-header.today{color:#e67e22;border-bottom:2px solid rgba(230,126,34,.25)}
+.section-header.archive{color:#888;border-bottom:2px solid rgba(0,0,0,.08)}
 .cat-tabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:16px;padding:0 4px}
 .cat-tab{padding:7px 16px;border-radius:50px;font-size:.78rem;cursor:pointer;background:rgba(255,255,255,.7);color:#888;border:1px solid rgba(0,0,0,.06);user-select:none;white-space:nowrap}
 .cat-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
@@ -86,7 +89,7 @@ function render(){
   document.getElementById('catTabs').innerHTML=cats.map(function(c){return'<span class="cat-tab'+(c===activeCat?' active':'')+'" data-cat="'+c+'">'+cl[c]+'</span>'}).join('');
   var filtered=activeCat==='all'?DATA.links:DATA.links.filter(function(l){return(l.cat||'其他资源')===activeCat});
   if(searchTerm){var q=searchTerm.toLowerCase();filtered=filtered.filter(function(l){return l.title.toLowerCase().indexOf(q)>-1||(l.desc||'').toLowerCase().indexOf(q)>-1})}
-  document.getElementById('linksContainer').innerHTML=filtered.map(function(l,i){return'<a href="'+esc(l.url)+'" target="_blank" rel="noopener" class="link-card"><img class="link-thumb" src="'+(l.image||gi(i))+'" onerror="this.src=\''+gi(i)+'\'" alt=""><div class="link-info"><div class="link-title">'+esc(l.title)+'</div>'+(l.desc?'<div class="link-desc">'+esc(l.desc)+'</div>':'')+'</div><span class="link-arrow">→</span></a>'}).join('')}
+  var today=(new Date()).toISOString().slice(0,10);var tl=filtered.filter(function(l){return l.dateAdded===today});var ol=filtered.filter(function(l){return l.dateAdded!==today});var ch=function(l,i){return'<a href="'+esc(l.url)+'" target="_blank" rel="noopener" class="link-card"><img class="link-thumb" src="'+(l.image||gi(i))+'" onerror="this.src=\''+gi(i)+'\'" alt=""><div class="link-info"><div class="link-title">'+esc(l.title)+'</div>'+(l.desc?'<div class="link-desc">'+esc(l.desc)+'</div>':'')+'</div><span class="link-arrow">→</span></a>'};var html='';if(tl.length)html+='<div class="section-header today">🔥 今日视频同款</div>'+tl.map(ch).join('');if(ol.length)html+='<div class="section-header archive">📁 往期资源</div>'+ol.map(function(l,i){return ch(l,i+1000)}).join('');if(!html)html='<div style="text-align:center;color:#bbb;padding:30px 0;font-size:.82rem">暂无资源</div>';document.getElementById('linksContainer').innerHTML=html}
 document.getElementById('catTabs').addEventListener('click',function(e){var t=e.target.closest('.cat-tab');if(!t)return;activeCat=t.dataset.cat;render()});
 // Search
 document.getElementById('searchToggle').addEventListener('click',function(){var w=document.getElementById('searchBarWrap');w.classList.toggle('show');if(w.classList.contains('show'))document.getElementById('searchInput').focus();else{searchTerm='';document.getElementById('searchInput').value='';render()}});
